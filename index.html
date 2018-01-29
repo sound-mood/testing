@@ -1,77 +1,91 @@
-
-
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Sound Mood</title>
+
+  </head>
+
   <body>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-        <div id="sound" style="display: none; top: -9999; left: -9999" ></div>
-        <div id="player" style="position: fixed; z-index: -99; width: 100%; height: 100%"></div>
-    
+    <div id="player1" style="position: fixed; z-index: -99; width: 100%; height: 100%"></div>    
+    <div id="player2" style="display: none"></div> 
+    <div id="player3" style="display: none"></div>
     
 
 
     <script>
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
 
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var tag = document.createElement('script');
 
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          //height: '390',
-          //width: '640',
-          videoId: '5hPS-3zQCzQ',
-          playerVars: { 'rel': 0, 'autoplay': 1, 'controls': 0, 'loop': 1, 'showinfo': 0 },
-          events: {
-            'onReady': onPlayerReady,
-            //'onStateChange': onPlayerStateChange
-          }
-        });
-      }
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.setVolume(0);
-        event.target.playVideo();
-      }
+        var player1;
+        var player2;
+        var player3;
+        function onYouTubeIframeAPIReady() {
+            player1 = new YT.Player('player1', {
+                                  
+                                  videoId: 'VhQWF-H6eNU',
+                                  playerVars: { 'rel': 0, 'showinfo': 0, 'loop': 1, 'autoplay': 1, 'controls': 0 },
+                                  events: {
+                                        'onReady': onPlayer1Ready,
+                                        //'onStateChange': onPlayer1StateChange
+                                  }
+                             });
+            player2 = new YT.Player('player2', {
+                                  
+                                  videoId: 'q76bMs-NwRk',
+                                  playerVars: { 'rel': 0, 'showinfo': 0, 'loop': 1, 'autoplay': 1, 'controls': 0 },
+                                  events: {
+                                       'onReady': onPlayer2Ready,
+                                       //'onStateChange': onPlayer2StateChange
+                                  }
+                              });
+            player3 = new YT.Player('player3', {
+                                  videoId: 'n0svuurLibQ',
+                                  playerVars: { 'rel': 0, 'showinfo': 0, 'loop': 1, 'autoplay': 1, 'controls': 0 },
+                                  events: {
+                                    'onReady': onPlayer3Ready,
+                                  }
+                                  
+                                  
 
 
 
-//######################################################################################
-    //   var tagTwo = document.createElement('script');
+            })
+        }
 
-    //   tagTwo.src = "https://www.youtube.com/iframe_api";
-    //   var firstScriptTag = document.getElementsByTagName('script')[0];
-    //   firstScriptTag.parentNode.insertBefore(tagTwo, firstScriptTag);
+        function onPlayer1Ready() {
+          player1.setVolume(0);
 
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var sound;
-      function onYouTubeIframeAPIReady() {
-        sound = new YT.Player('sound', {
-          //height: '390',
-          //width: '640',
-          videoId: 'q76bMs-NwRk',
-          playerVars: {'loop': 1, 'autoplay': 1},
-          events: {
-            'onReady': onPlayerTwoReady,
-            //'onStateChange': onPlayerStateChange
-          }
-        });
-      }
+        }
 
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerTwoReady(event) {
-        event.target.setVolume(100);
-        event.target.playVideo();
-      }
+        function onPlayer2Ready() {
+          player2.setVolume(100);
+        }
 
-   
+        function onPlayer3Ready() {
+          player3.setVolume(90);
+        }
+
+
+    
     </script>
   </body>
+
 </html>
+    
+    
+
+
+    
+        
+        
+        
+    
+      
+       
+
+
+   

@@ -1,52 +1,49 @@
-'use strict';
+<!DOCTYPE html>
+<html>
+  <body>
+  
+        <!-- <div id="sound" style="display: none; top: -9999; left: -9999" ></div> -->
+        <div id="bg_vid" style="position: fixed; z-index: -99; width: 100%; height: 100%"></div>
+     
+    
+     <div style="display: none">
+            <iframe frameborder="0" height="100%" width="100%" 
+              src="https://youtube.com/embed/q76bMs-NwRk?autoplay=1&controls=0&showinfo=0&autohide=1&rel=0&loop=1">
+            </iframe>
+          </div>
 
-var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          //height: '390',
-          //width: '640',
-          videoId: '5hPS-3zQCzQ',
-          playerVars: { 'rel': 0, 'autoplay': 1, 'controls': 0, 'loop': 1, 'showinfo': 0 },
-          events: {
-            'onReady': onPlayerReady,
-            //'onStateChange': onPlayerStateChange
-          }
-        });
+          <div style="display: none">
+                <iframe frameborder="0" height="100%" width="100%" 
+                  src="https://youtube.com/embed/n0svuurLibQ?autoplay=1&controls=0&showinfo=0&autohide=1&rel=0&loop=1">
+                </iframe>
+              </div>    
+
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    
+      
+    
+      
+      var player;
+      function onYouTubeIframeAPIReady(){
+          player = new YT.Player('bg_vid', {
+            videoId: 'VhQWF-H6eNU',
+            playerVars: { 'rel': 0, 'autoplay': 1, 'controls': 0, 'loop': 1, 'showinfo': 0 },
+              events: {
+                  'onReady': onPlayerReady
+              }
+          });
       }
 
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-        event.target.setVolume(0);
-        event.target.playVideo();
+      function onPlayerReady() {
+          player.setVolume(0);
       }
-
-
-
-//######################################################################################
-    //   var tagTwo = document.createElement('script');
-
-    //   tagTwo.src = "https://www.youtube.com/iframe_api";
-    //   var firstScriptTag = document.getElementsByTagName('script')[0];
-    //   firstScriptTag.parentNode.insertBefore(tagTwo, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var sound;
-      function onYouTubeIframeAPIReady() {
-        sound = new YT.Player('sound', {
-          //height: '390',
-          //width: '640',
-          videoId: 'q76bMs-NwRk',
-          playerVars: {'loop': 1, 'autoplay': 1},
-          events: {
-            'onReady': onPlayerTwoReady,
-            //'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerTwoReady(event) {
-        event.target.setVolume(100);
-        event.target.playVideo();
-      }
+    </script>
+  </body>
+</html>

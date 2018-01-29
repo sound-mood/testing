@@ -30,7 +30,7 @@
                                   playerVars: { 'rel': 0, 'showinfo': 0, 'loop': 1, 'autoplay': 1, 'controls': 0 },
                                   events: {
                                         'onReady': onPlayer1Ready,
-                                        //'onStateChange': onPlayer1StateChange
+                                        'onStateChange': onPlayer1StateChange
                                   }
                              });
             player2 = new YT.Player('player2', {
@@ -67,6 +67,23 @@
 
         function onPlayer3Ready() {
           player3.setVolume(90);
+        }
+
+        function onPlayer1StateChange() {
+          if(player2.getPlayerState() == '1') {
+            player2.pauseVideo();
+          } else if(player2.getPlayerState() == '2') {
+            player2.playVideo();
+          }
+
+          if(player3.getPlayerState() == '1') {
+            player3.pauseVideo();
+          } else if(player3.getPlayerState() == '2') {
+            player3.playVideo();
+          }
+
+
+
         }
 
 
